@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { apiCurrencies } from '../redux/actions';
+import { apiCurrencies, savingExpense } from '../redux/actions';
 
 class WalletForm extends Component {
   state = {
+    id: 0,
     value: '',
     description: '',
     currency: 'USD',
@@ -21,6 +22,20 @@ class WalletForm extends Component {
     const { name, value } = target;
     this.setState({
       [name]: value,
+    });
+  };
+
+  saveMyExpenses = (myState) => {
+    const { dispatch, expenses } = this.props;
+    let idLastExpense = 0;
+    if (expenses.length !== 0) {
+      idLastExpense = expenses[expenses.length - 1].id + 1;
+    }
+    myState.id = idLastExpense === 0 ? 0 : idLastExpense;
+    dispatch(savingExpense(myState));
+    this.setState({
+      value: '',
+      description: '',
     });
   };
 
@@ -94,8 +109,7 @@ class WalletForm extends Component {
         </label>
         <button
           type="button"
-          // disabled={ !(isValideEmail === true && isValidePassword === true) }
-          // onClick={ () => this.saveEmail(email) }
+          onClick={ () => this.saveMyExpenses(this.state) }
         >
           Adicionar despesa
         </button>
@@ -107,10 +121,12 @@ class WalletForm extends Component {
 WalletForm.propTypes = {
   dispatch: PropTypes.func.isRequired,
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
+  expenses: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };
 
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
+  expenses: state.wallet.expenses,
 });
 
 export default connect(mapStateToProps)(WalletForm);
