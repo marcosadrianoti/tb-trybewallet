@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { deleteExpense } from '../redux/actions';
+import { deleteExpense, setEditor } from '../redux/actions';
 import '../styles/table.css';
 
 class Table extends Component {
@@ -12,7 +12,7 @@ class Table extends Component {
   };
 
   render() {
-    const { expenses } = this.props;
+    const { expenses, dispatch, editor } = this.props;
     return (
       <>
         <div>Table</div>
@@ -58,8 +58,19 @@ class Table extends Component {
                   <td>
                     <button
                       type="button"
+                      data-testid="edit-btn"
+                      className="blueBtn"
+                      onClick={
+                        () => dispatch(setEditor({ editor: true, idToEdit: id }))
+                      }
+                    >
+                      Editar
+                    </button>
+                    <button
+                      type="button"
                       data-testid="delete-btn"
                       className="redBtn"
+                      disabled={ editor }
                       onClick={ () => this.deleteExpenseThenAction(id) }
                     >
                       Excluir
@@ -78,10 +89,12 @@ class Table extends Component {
 Table.propTypes = {
   dispatch: PropTypes.func.isRequired,
   expenses: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  editor: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   expenses: state.wallet.expenses,
+  editor: state.wallet.editor,
 });
 
 export default connect(mapStateToProps)(Table);

@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 class Header extends Component {
   calculateTotal = (expenses) => {
     let grandTotal = 0;
-    console.log('header', expenses);
     expenses.forEach((expense) => {
       const currencies = expense.exchangeRates;
       const expenseCurrency = expense.currency;
