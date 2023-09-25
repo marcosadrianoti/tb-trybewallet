@@ -20,13 +20,16 @@ Criar actions assíncronas na sua aplicação React que faz uso de Redux.
 <details>
 <summary><strong> Requisitos do projeto:</strong></summary>
 
-  * Teste o componente `<App.js />`.
-  * Teste o componente `<About.js />`.
-  * Teste o componente `<FavoritePokemon.js />`.
-  * Teste o componente `<NotFound.js />`.
-  * Teste o componente `<Pokedex.js />`.
-  * Teste o componente `<Pokemon.js />`.
-  * Teste o componente `<PokemonDetails.js />`.
+  * Criar uma página inicial de login.
+  * Criar um header para a página de carteira.
+  * Desenvolver um formulário para adicionar uma despesa.
+  * Salvar todas as informações do formulário no estado global.
+  * Desenvolver testes para atingir 60% de cobertura total da aplicação.
+  * Desenvolver uma tabela com os gastos.
+  * Implementar a lógica para que a tabela seja alimentada pelo estado da aplicação.
+  * Criar um botão para deletar uma despesa da tabela.
+  * Criar um botão para editar uma despesa da tabela.
+  * Desenvolver testes para atingir 90% de cobertura total da aplicação.
 </details>
   
 ## Rodando o projeto localmente
