@@ -4,7 +4,10 @@ Projeto desenvolvido por mim durante o curso de Desenvolvimento Web na Trybe. Di
 <details>
 <summary><strong>Objetivos do projeto:</strong></summary>
 
-  * Desenvolver testes para uma aplicação `React` que já está criada e configurada, utilizando `Jest` e a biblioteca `React Testing Library`.
+  * Ddesenvolver uma carteira de controle de gastos com conversor de moedas, o usuário deverá ser capaz de:
+    * Adicionar, remover e editar um gasto.
+    * Visualizar uma tabelas com seus gastos.
+    * Visualizar o total de gastos convertidos para uma moeda de escolha.
   * Verificar se eu era capaz de:
     * Utilizar os seletores `queries` da `React-Testing-Library` em testes automatizados.
     * Simular eventos com a `React-Testing-Library` em testes automatizados.
